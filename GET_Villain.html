@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text"/javascript>
+      // AJAX get derived from from Adam Khoury explanation
+      function ajax_get_json() {
+        var getData = newXMLHttpRequest();
+        getData.open("GET", "BatmanVillains.json", true);
+        getData.setRequestHeader("Content-type", "application/json", true");
+        getData.onreadystatechange = function() {
+          if(getData.readyState == 4 && getData.status == 200) {
+            var data = JSON.parse(getData.responseText);
+            var results = document.getElementById("results");
+            results.innerHTML = "";
+            for(var obj in data) {
+              results.innerHTML += data[obj].ID + <br />;
+            }
+          }
+        }
+        getdata.send(null);
+        results.innerHTML = "loading...";
+      }
+    </script>
+  </head>
+  <body>
+    <div id="results"></div>
+    <script type="text/javascript">
+      ajax_get_json();
+    </script>
+  </body>
+</html>
